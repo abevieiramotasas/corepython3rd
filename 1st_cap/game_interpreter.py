@@ -15,9 +15,7 @@ condicoes = {
 
 def busca_condicao(condicao):
     for pattern, eval_ in ((condicoes[x]['pattern'], condicoes[x]['eval']) for x in condicoes.keys()):
-        print(pattern)
         m = pattern.match(condicao)
-        print(m.group('life'))
         if m:
             return eval_(int(m.group('life')))
     
@@ -40,7 +38,6 @@ if __name__ == '__main__':
         commands_list = c.findall(commands_string)
         for condicao, true_acao, false_acao in commands_list:
             if busca_condicao(condicao)(life):
-                print(life)
                 print(commands[true_acao]())
             else:
                 print(commands[false_acao]())
